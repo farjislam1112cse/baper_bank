@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login form , input field, passowrd test field ,submit (bap er bank)</title>
+    
+    <!-- tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>    
+    
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- coustomize js  -->
+
+    <!-- css style -->
+    <style>
+
+        #eye-icon{
+            position: relative;
+            right: 33px;
+        }
+
+    </style>
+
+</head>
+    <body class="text-slate-200	"> 
+        <header class="text-center">
+        <span class="text-6xl text-neutral-800 font-extrabold">Baper <span class="text-6xl text-amber-600 font-extrabold">B</span>ank </span>
+        </header>
+        <main class="mt-4" >
+            <section class=" bg-gray-950 max-w-xl m-auto py-16  shadow-neutral-800 shadow-lg">
+                <div class="wrapper w-4/5 m-auto">
+                    <h3 class="text-center text-4xl">Child's login</h3>
+                    <hr class="mt-4">
+                    <div class="mt-4 form">
+                        <label for="email">child's Id</label>
+                        <input type="email" class="block outline-none text-neutral-700 px-2" id="email-field">
+                        <label for="pass" class="block">Password</label>
+                        <input type="password" class="outline-none text-neutral-700 px-2" id="pass-field">
+                        <button id="eye-icon"> <i class="fa-solid fa-eye" ></i></button>
+                        <button id="btn" type="submit" class="bg-amber-600 py-2 px-6 text-stone-300 text-lg mt-4 block">submit</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- js code -->
+        <script>
+
+            // log in checking 
+            document.getElementById("btn").addEventListener('click', function(){
+                const emailField = document.getElementById('email-field');
+                const emailValue =  emailField.value;
+            
+                const passField = document.getElementById('pass-field');
+                const passValue =  passField.value;
+                //email check 
+                if(emailValue === "farjislam1112@gmail.com" && passValue === "badhon44221"){
+                    window.location.href = "bank.html"
+                }
+                else{
+                alert("password /email thik koira de gadha")
+                }
+            })
+
+            // eye button active
+            document.getElementById("eye-icon").addEventListener('click', function(){
+            const  eyeButton = document.getElementById('eye-icon');
+                const passField = document.getElementById('pass-field');
+                if(passField.type === "password"){
+                    passField.type ="text";
+                    eyeButton.innerHTML = '<i class="fa-solid fa-eye-slash"></i>'
+
+                }
+                else{
+                    passField.type = "password"; 
+                    eyeButton.innerHTML = '<i class="fa-solid fa-eye"></i>'
+                }
+            })
+        </script>
+    </body>
+</html>

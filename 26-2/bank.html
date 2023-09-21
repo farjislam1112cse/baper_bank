@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bank Dashborad</title>
+     <!-- tailwind -->
+     <script src="https://cdn.tailwindcss.com"></script>    
+
+</head>
+<body>
+    <h1 class=" text-5xl text-neutral-800 font-extrabold text-center mt-2">Your Dashboard</h1>
+    <div class=" grid grid-cols-3 gap-3 w-6/12 m-auto mt-12">
+        <div class="bg-amber-600 p-8 text-center">
+            <h4 class=" text-3xl text-slate-200">Diposite</h4>
+            <h2 class="text-4xl text-slate-200 ">$<span class="text-4xl text-slate-200 " id="dipo-total">00</span></h2>
+        </div>
+        <div class="bg-amber-600 p-8 text-center">
+            <h4 class=" text-3xl text-slate-200">Withdraw</h4>
+            <h2 class="text-4xl text-slate-200 ">$<span class="text-4xl text-slate-200 " id="widthdraw-balance">00</span></h2>
+        </div>
+        <div class="bg-amber-600 p-8 text-center ">
+            <h4 class=" text-3xl text-slate-200">Balance</h4>
+            <h2 class="text-4xl text-slate-200 ">$<span class="text-4xl text-slate-200 " id="total-balance">1000</span></h2>
+        </div>
+    </div>
+    <div class="div input-wrapper grid grid-cols-2 gap-3 mt-12 w-6/12 m-auto">
+        <div class=" bg-amber-600 p-12" >
+            <h2>Please Diposite</h2>
+            <input type="text" id="diposite-input-field" class="outline-none p-1 text-xs w-full" placeholder="$ Amount you want to diposite">
+            <button  class="py-2 px-6 bg-stone-300 text-sm mt-4" id="diposite-btn">Diposite</button>
+        </div>
+        <div class=" bg-amber-600 p-12">
+            <h2>Please Withdraw</h2>
+            <input type="text" id="widthdraw-input-filed" class="outline-none p-1 text-xs w-full" placeholder="$ Amount you want to Withdraw">
+            <button  class="py-2 px-6 bg-stone-300 text-sm mt-4" id="Withdraw-btn">Withdraw</button>
+        </div>
+    </div>
+
+    <!-- adding js  -->
+    <script>
+        // diposite btn active
+        document.getElementById("diposite-btn").addEventListener('click' , function(){
+           const getDipoField = document.getElementById("diposite-input-field");
+            //console.log(getDipoField);
+            const newDipoAmmount= getDipoField.value;
+             getDipoField.value = '' ;
+            // console.log(getDipoFieldValue);
+            const dipositeTotalAmmount = document.getElementById("dipo-total");
+            const  previusdipoAmmount = dipositeTotalAmmount.innerText;
+            const currentDipoAmmount = parseInt(newDipoAmmount)+ parseInt(previusdipoAmmount);
+            dipositeTotalAmmount.innerText = currentDipoAmmount;
+
+            // get ballance 
+            
+            const totalBalance = document.getElementById("total-balance");
+            const previusBalance = totalBalance.innerText;
+            const currentBalance = parseFloat(newDipoAmmount) + parseFloat(previusBalance);
+            totalBalance.innerText = currentBalance;
+        
+        })
+        // widthdraw btn active
+        document.getElementById("Withdraw-btn").addEventListener('click' , function(){
+            const getWidField = document.getElementById("widthdraw-input-filed");
+            // console.log(getWidField);
+            const newWidAmmount = getWidField.value;
+            getWidField.value =" ";
+
+            const widthdrawTotalAmmount = document.getElementById("widthdraw-balance");
+            const  previuswidAmmount = widthdrawTotalAmmount.innerText;
+            
+
+            // widthdraw balance
+            const totalBalance = document.getElementById("total-balance");
+            const previusBalance = totalBalance.innerText;
+           
+            if(newWidAmmount > previusBalance){
+
+               alert("baper bank e taka nai")
+               return;
+            }
+            // else if(newWidAmmount = - previusBalance){
+            //     alert("baper bank e taka nai")
+            //     return;
+            // }
+
+            const currentwidAmmount = parseInt(newWidAmmount)+parseInt(previuswidAmmount);
+            widthdrawTotalAmmount.innerText = currentwidAmmount;
+
+            const currentBalance = parseFloat(previusBalance) -parseFloat(newWidAmmount);
+            totalBalance.innerText = currentBalance;
+
+        })
+    </script>
+</body>
+</html>
